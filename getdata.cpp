@@ -13,7 +13,7 @@ void getdata(std::ifstream& myfile, arma::mat& data)
 		while( getline (myfile,line))
 		{
 			using namespace boost;
-		   tokenizer<escaped_list_separator<char> > tok(line, escaped_list_separator<char>('\\', ' ', '\"'));
+		   tokenizer<escaped_list_separator<char> > tok(line, escaped_list_separator<char>('\\', ',', '\"'));
 			columns = std::distance(tok.begin(), tok.end());
 		   for(tokenizer<escaped_list_separator<char> >::iterator beg=tok.begin(); beg!=tok.end();++beg)
 			{
