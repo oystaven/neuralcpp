@@ -13,5 +13,6 @@ int main()
    arma::mat data;
 	getdata(myfile,data);
 	data.print();
+	//heihei
 	return 0;
 }
