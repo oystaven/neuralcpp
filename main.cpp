@@ -5,7 +5,7 @@
 #include "costfunc.h"
 #include "sigmoid.h"
 #include "sigmoidGradient.h"
-
+#include "initWeights.h"
 #if __cplusplus <= 199711L
   #error This library needs at least a C++11 compliant compiler
 #endif
@@ -47,8 +47,13 @@ int main()
 	// nn_params.print();
 	J=costfunc(Theta1, Theta2, input_layer_size, hidden_layer_size, num_labels, X, y, lambda);
 	std::cout << J << "\n";
-	arma::mat haha; haha << 1 << -0.5 << 0 << 0.5 << 1 << arma::endr;
-	arma::mat g = sigmoidGradient(haha);
-	g.print();
+	
+	//Initialize weights randomly between 0 and 0.1
+	arma::mat init_Theta1; init_Theta1.zeros(input_layer_size,hidden_layer_size);
+	arma::mat init_Theta2; init_Theta2.zeros(hidden_layer_size,num_labels);
+	initWeights(init_Theta1);
+	initWeights(init_Theta2);
+	
+	
 	return 0;
 }

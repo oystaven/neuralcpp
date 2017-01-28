@@ -17,7 +17,7 @@ double& lambda)
 	
 	arma::mat Theta1_grad; Theta1_grad.zeros(size(Theta1));
 	arma::mat Theta2_grad; Theta2_grad.zeros(size(Theta2));
-
+	//Feedforward cost
 	arma::vec onevec; onevec.ones(m);
 	X.insert_cols(0,onevec);
 	for(int i=0; i<m; i++)
@@ -34,11 +34,12 @@ double& lambda)
 		int ind = arma::as_scalar(y(i,0));
 		Y(0,ind-1) = 1;
 		J_cost = J_cost - Y*trans(log(h))-(1-Y)*trans(log(1-h));
-		//J_cost = J_cost - arma::sum(Y*trans(log(h))-(1-Y)*trans(log(1-h)));
 	}
 	J_cost=J_cost/m;
 	J_cost = J_cost + (lambda / (2*m) * (arma::sum(arma::sum(arma::pow(Theta1,2)),1) + arma::sum(arma::sum(arma::pow(Theta2,2)),1)));
-
 	J=arma::as_scalar(J_cost);
+	
+	//Backprop
+	
 	return J;
 }
