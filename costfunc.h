@@ -2,12 +2,7 @@
 #define COSTFUNC_H
 #include <armadillo>
 #include <iostream>
-double costfunc(arma::mat& Theta1,
-arma::mat& Theta2, 
-int& input_layer_size,  
-int& hidden_layer_size, 
-int& num_labels, 
-arma::mat& X, 
-arma::mat& y, 
-double& lambda);
+#include "sigmoid.h"
+#include "nn_data.h"
+double costfunc(std::vector<double> nn_params, NN_DATA nn_data);
 #endif

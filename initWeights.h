@@ -4,7 +4,8 @@
 #include <iostream>
 #include <random>
 #include <armadillo>
-void initWeights(arma::mat& weights);
+#include <cmath>
+void initWeights(arma::mat& weights, const int L_in, const int L_out);
 
 #endif
 
