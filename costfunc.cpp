@@ -4,7 +4,7 @@
 double costfunc(std::vector<double> nn_params, NN_DATA nn_data)
 {
 	double J=0;
-	arma::mat J_cost; J_cost.set_size(1,1);
+	arma::mat J_cost; J_cost.zeros(1,1);
 	int m=nn_data.X.n_rows;
 	int K=nn_data.num_labels;
 	int lambda=nn_data.lambda;

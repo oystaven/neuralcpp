@@ -9,6 +9,7 @@
 #include "backprop.h"
 #include "nlminFunc.h"
 #include "nn_data.h"
+#include "definitions.h"
 
 #if __cplusplus <= 199711L
   #error This library needs at least a C++11 compliant compiler
@@ -47,13 +48,15 @@ int main()
 	arma::vec nn_params_arm = join_vert(init_Theta1_vec, init_Theta2_vec);
 	stdvec nn_params = arma::conv_to< stdvec >::from(nn_params_arm);
 	/* Initialize gradient vector for use in NLopt */
+	//std::vector<double> nn_grad;
 	std::vector<double> nn_grad;
+	nn_grad.reserve(nn_params.size());
 	/* Optimize with NLopt */
 	std::cout << "\nFinding minimum objective ...\n";
 	nlopt::opt opt(nlopt::LD_LBFGS, nn_params.size());
 	opt.set_maxeval(50);
 	opt.set_min_objective(nlminFunc, &nn_data);
-	double min_cost;
+	double min_cost=0.0;
 	nlopt::result result = opt.optimize(nn_params, min_cost);
 	std::cout << "Minimum cost value:" << min_cost << "\n";
 	std::cout << "NLopt return code:" << result << "\n";
