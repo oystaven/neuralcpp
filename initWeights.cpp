@@ -2,7 +2,7 @@
 
 void initWeights(arma::mat& weights, const int L_in, const int L_out)
 {
-weights.zeros(L_in, L_out);
+weights.zeros(L_out, 1+L_in);
 unsigned rows=weights.n_rows;
 unsigned columns=weights.n_cols;
 double e_init = sqrt(6) / sqrt(L_out+L_in); 

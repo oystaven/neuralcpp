@@ -28,7 +28,7 @@ std::vector<double> backprop(std::vector<double> nn_params, NN_DATA nn_data)
 		arma::rowvec h = a3;
 		arma::rowvec Y; Y.zeros(1,K);
 		int ind = arma::as_scalar(nn_data.y(i,0));
-		Y(0,ind-1) = 1;
+		Y(0,ind) = 1;
 		arma::rowvec delta3 = a3-Y;
 		arma::rowvec delta2 = delta3*Theta2%sigmoidGradient(join_rows(one,z2));
 		deltacum1 = deltacum1 + trans(delta2.cols(1,delta2.n_cols-1))*a1;
