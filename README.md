@@ -3,6 +3,7 @@ Neural networks in C++. Based on Andrew Ng's MATLAB exercise 4 in his Coursera c
 Trains a neural network to recognize MNIST handwritten digits. Pixel vector per example is 28x28=784. Hidden layer size can be set in nn_data class header.
 
 Armadillo linear algebra library is used for matrix operations:
+
 Conrad Sanderson and Ryan Curtin. 
 Armadillo: a template-based C++ library for linear algebra. http://arma.sourceforge.net/armadillo_joss_2016.pdf
 Journal of Open Source Software, Vol. 1, pp. 26, 2016.
