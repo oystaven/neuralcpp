@@ -50,8 +50,6 @@ int main()
 	std::vector<double> nn_grad;
 	/* Optimize with NLopt */
 	std::cout << "\nFinding minimum objective ...\n";
-	double J = costfunc(nn_params, nn_data);
-	std::cout << J << std::endl;
 	nlopt::opt opt(nlopt::LD_LBFGS, nn_params.size());
 	opt.set_maxeval(50);
 	opt.set_min_objective(nlminFunc, &nn_data);
