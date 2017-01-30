@@ -41,12 +41,6 @@ int main()
 	initWeights(init_Theta1, nn_data.input_layer_size, nn_data.hidden_layer_size);
 	initWeights(init_Theta2, nn_data.hidden_layer_size, nn_data.num_labels);
 
-	// std::cout << nn_data.X.n_rows << std::endl;
-	// std::cout << nn_data.X.n_cols << std::endl;
-	// std::cout << nn_data.y.n_rows << std::endl;
-	// std::cout << nn_data.y.n_cols << std::endl;
-	// std::cout << size(init_Theta1) << std::endl;
-	// std::cout << size(init_Theta2) << std::endl;
 	/* Unroll into one parameter vector for NLopt */
 	arma::vec init_Theta1_vec = vectorise(init_Theta1);
 	arma::vec init_Theta2_vec = vectorise(init_Theta2);
