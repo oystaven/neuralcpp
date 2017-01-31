@@ -80,10 +80,6 @@ int main()
 	nn_testdata.X.insert_cols(0,onevec);
 	
 	arma::uvec predictions = predict(nn_params, nn_testdata);
-	findErrors(nn_errors, predictions, nn_testdata.y, nn_testdata.num_labels);
-	std::cout << nn_errors.TP << std::endl;
-	std::cout << nn_errors.FP << std::endl;
-	std::cout << nn_errors.TN << std::endl;
-	std::cout << nn_errors.FN << std::endl;
+
 	return 0;
 }
