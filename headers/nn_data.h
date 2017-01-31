@@ -9,8 +9,8 @@ class NN_DATA {
 		int num_labels = 10;
 		double lambda=0.1;
 		int iterations=0;
-		arma::mat X=arma::zeros<arma::mat>(1,1);
-		arma::mat y=arma::zeros<arma::mat>(1,1);
+		arma::mat X;
+		arma::uvec y;
 };
 
 #endif

@@ -28,7 +28,7 @@ double costfunc(std::vector<double> nn_params, NN_DATA nn_data)
 		arma::rowvec a3 = sigmoid(z3);
 		arma::rowvec h = a3;
 		arma::rowvec Y; Y.zeros(1,K);
-		int ind = arma::as_scalar(nn_data.y(i,0));
+		unsigned ind = arma::as_scalar(nn_data.y(i,0));
 	   Y(0,ind) = 1;
 		J_cost = J_cost - Y*trans(log(h))-(1-Y)*trans(log(1-h));
 	}
