@@ -1,4 +1,4 @@
-#include "sigmoidGradient.h"
+#include "headers/sigmoidGradient.h"
 arma::mat sigmoidGradient(arma::mat X)
 {
 	arma::mat Y; Y.zeros(size(X));

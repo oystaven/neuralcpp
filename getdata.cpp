@@ -1,12 +1,12 @@
-#include "getdata.h"
+#include "headers/getdata.h"
 
 void getdata(std::ifstream& myfile, arma::mat& data)
 {
 	//get data and read into flat string vector 
 	std::vector<std::string> vec;
 	std::string line;
-	size_t columns=0;
-	size_t rows=0;
+	unsigned columns=0;
+	unsigned rows=0;
 		
 	if (myfile.is_open())
 	{

@@ -1,4 +1,4 @@
-#include "sigmoid.h"
+#include "headers/sigmoid.h"
 
 arma::mat sigmoid(arma::mat& X)
 {

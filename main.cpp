@@ -1,15 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <nlopt.hpp>
-#include "getdata.h"
-#include "costfunc.h"
-#include "sigmoid.h"
-#include "sigmoidGradient.h"
-#include "initWeights.h"
-#include "backprop.h"
-#include "nlminFunc.h"
-#include "nn_data.h"
-#include "definitions.h"
+#include "headers/getdata.h"
+#include "headers/costfunc.h"
+#include "headers/sigmoid.h"
+#include "headers/sigmoidGradient.h"
+#include "headers/initWeights.h"
+#include "headers/backprop.h"
+#include "headers/nlminFunc.h"
+#include "headers/nn_data.h"
 
 #if __cplusplus <= 199711L
   #error This library needs at least a C++11 compliant compiler

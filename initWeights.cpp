@@ -1,4 +1,4 @@
-#include "initWeights.h"
+#include "headers/initWeights.h"
 
 void initWeights(arma::mat& weights, const int L_in, const int L_out)
 {

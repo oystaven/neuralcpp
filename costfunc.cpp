@@ -1,4 +1,4 @@
-#include "costfunc.h"
+#include "headers/costfunc.h"
 
 
 double costfunc(std::vector<double> nn_params, NN_DATA nn_data)
