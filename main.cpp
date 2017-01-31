@@ -26,18 +26,18 @@ int main()
 	typedef std::vector<double> stdvec;
 	NN_DATA nn_data;	
 	
-	// //Use getdata() to import data, labels
+	/* Use getdata() to import data, labels */
 	std::cout << "Importing data ...\n";
 	std::ifstream featurefile ("data/trainData.csv");
 	getdata(featurefile,nn_data.X);
 	std::ifstream labelfile ("data/trainLabels.csv");
 	getdata(labelfile,nn_data.y);
 	
-	// //Add bias vector of ones to data vector
+	/* Add bias vector of ones to data vector */
 	arma::vec onevec; onevec.ones(nn_data.X.n_rows);
 	nn_data.X.insert_cols(0,onevec);
 	
-	//Initialize weights randomly, small values
+	/* Initialize weights randomly, small values */
 	arma::mat init_Theta1; arma::mat init_Theta2;
 	initWeights(init_Theta1, nn_data.input_layer_size, nn_data.hidden_layer_size);
 	initWeights(init_Theta2, nn_data.hidden_layer_size, nn_data.num_labels);
@@ -47,10 +47,11 @@ int main()
 	arma::vec init_Theta2_vec = vectorise(init_Theta2);
 	arma::vec nn_params_arm = join_vert(init_Theta1_vec, init_Theta2_vec);
 	stdvec nn_params = arma::conv_to< stdvec >::from(nn_params_arm);
+	
 	/* Initialize gradient vector for use in NLopt */
-	//std::vector<double> nn_grad;
 	std::vector<double> nn_grad;
 	nn_grad.reserve(nn_params.size());
+	
 	/* Optimize with NLopt */
 	std::cout << "\nFinding minimum objective ...\n";
 	nlopt::opt opt(nlopt::LD_LBFGS, nn_params.size());
