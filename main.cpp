@@ -10,10 +10,8 @@
 #include "headers/backprop.h"
 #include "headers/nlminFunc.h"
 #include "headers/nn_data.h"
-#include "headers/nn_errors.h"
 #include "headers/definitions.h"
 #include "headers/predict.h"
-#include "headers/findErrors.h"
 #if __cplusplus <= 199711L
   #error This library needs at least a C++11 compliant compiler
 #endif
@@ -57,18 +55,15 @@ int main()
 	/* Optimize with NLopt */
 	std::cout << "\nFinding minimum objective ...\n";
 	nlopt::opt opt(nlopt::LD_LBFGS, nn_params.size());
-	opt.set_maxeval(4);
+	opt.set_maxeval(40);
 	opt.set_min_objective(nlminFunc, &nn_traindata);
 	double min_cost=0.0;
 	nlopt::result result = opt.optimize(nn_params, min_cost);
 	std::cout << "Minimum cost value:" << min_cost << "\n";
 	std::cout << "NLopt return code:" << result << "\n";
 	
-	/* Find accuracy, precision from test data */
-	NN_ERRORS nn_errors;
-	NN_DATA nn_testdata;
-	
 	/* First use getdata() to import test data, test labels */
+	NN_DATA nn_testdata;
 	std::cout << "Importing test data ...\n";
 	std::ifstream teFeaturefile ("data/testData.csv");
 	getdata(teFeaturefile, nn_testdata.X);
@@ -78,8 +73,13 @@ int main()
 	/* Add bias vector of ones to data vector */
 	onevec.ones(nn_testdata.X.n_rows);
 	nn_testdata.X.insert_cols(0,onevec);
-	
+	std::cout << "\nPredicting labels ...\n";
 	arma::uvec predictions = predict(nn_params, nn_testdata);
-
+	
+	/* Find accuracy */
+	arma::umat zz = (predictions==nn_testdata.y);
+	double accusum = arma::accu(zz);
+	double accuracy = accusum/nn_testdata.y.n_rows * 100;
+	std::cout << "Accuracy: " << accuracy << " %" << std::endl;
 	return 0;
 }
