@@ -27,4 +27,4 @@ sudo apt-get install libopenblas-dev liblapack-dev libarmadillo-dev libnlopt-dev
 
 Compile with  
 
-g++ -std=c++11 main.cpp getdata.cpp costfunc.cpp sigmoid.cpp sigmoidGradient.cpp initWeights.cpp backprop.cpp nlminFunc.cpp predict.cpp -o main -O2 -larmadillo -lnlopt -lm -Wall
+g++ -std=c++11 main.cpp getdata.cpp getlabels.cpp costfunc.cpp sigmoid.cpp sigmoidGradient.cpp initWeights.cpp backprop.cpp nlminFunc.cpp predict.cpp -o main -O2 -larmadillo -lnlopt -lm -Wall
