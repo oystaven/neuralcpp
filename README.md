@@ -2,6 +2,8 @@
 Neural networks in C++. Based on Andrew Ng's MATLAB exercise 4 in his Coursera course in machine learning.
 Trains a neural network to recognize MNIST handwritten digits. Pixel vector per example is 28x28=784. Hidden layer size can be set in nn_data class header.
 
+NOTE: This project was written in MacOS.
+
 Boost library is used for data tokenizer:
 
 http://www.boost.org
@@ -27,4 +29,4 @@ sudo apt-get install libopenblas-dev liblapack-dev libarmadillo-dev libnlopt-dev
 
 Compile with  
 
-g++ -std=c++11 main.cpp getdata.cpp getlabels.cpp costfunc.cpp sigmoid.cpp sigmoidGradient.cpp initWeights.cpp backprop.cpp nlminFunc.cpp predict.cpp -o main -O2 -larmadillo -lnlopt -lm -Wall
+g++ -std=c++11 main.cpp getdata.cpp getlabels.cpp costfunc.cpp sigmoid.cpp sigmoidGradient.cpp initWeights.cpp backprop.cpp nlminFunc.cpp predict.cpp -o main -O2 -larmadillo -lnlopt -lm

@@ -55,7 +55,7 @@ int main()
 	/* Optimize with NLopt */
 	std::cout << "\nFinding minimum objective ...\n";
 	nlopt::opt opt(nlopt::LD_LBFGS, nn_params.size());
-	opt.set_maxeval(40);
+	opt.set_maxeval(50);
 	opt.set_min_objective(nlminFunc, &nn_traindata);
 	double min_cost=0.0;
 	nlopt::result result = opt.optimize(nn_params, min_cost);
